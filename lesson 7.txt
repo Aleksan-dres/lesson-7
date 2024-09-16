@@ -1,0 +1,63 @@
+#import urwid
+
+score = 0
+
+# def on_ask_change(edit, new_edit_text):
+#     reply.set_text("Рейтинг пароля: %s" % new_edit_text)
+
+
+# ask = urwid.Edit("Введите пароль:", mask='*')
+# reply = urwid.Text("")
+# menu = urwid.Pile([ask, reply])
+# menu = urwid.Filler(menu, valign='top')
+# urwid.connect_signal(ask, 'change', on_ask_change)
+# urwid.MainLoop(menu).run()
+my_str = input()
+
+
+def has_digit(my_str):
+    return any(letter.isdigit() for letter in my_str)
+
+
+result1 = has_digit(my_str)
+
+
+def is_very_long(my_str):
+    return (len(my_str) > 12)
+
+
+result2 = is_very_long(my_str)
+
+
+def has_letters(my_str):
+    return any(letter.isalpha() for letter in my_str)
+
+
+result3 = has_letters(my_str)
+
+
+def has_upper_letters(my_str):
+    return any(letter.isupper() for letter in my_str)
+
+
+result4 = has_upper_letters(my_str)
+
+
+def has_lower_letters(my_str):
+    return any(letter.islower() for letter in my_str)
+
+
+result5 = has_lower_letters(my_str)
+
+
+def has_symbol(my_str):
+    return any(not letter.isalnum() for letter in my_str)
+
+
+result6 = has_symbol(my_str)
+
+list = [result1, result2, result3, result4, result5, result6]
+for i in list:
+    if i:
+        score += 2
+print("Рейтинг пароля: ", score)
